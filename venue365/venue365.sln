@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "alainsoftech.core", "Libraries\alainsoftech.core\alainsoftech.core.csproj", "{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.domain", "venue365.domain\venue365.domain.csproj", "{3BA289FC-0BFD-4B97-95EE-14E0BC6A190E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.data", "Libraries\venue365.data\venue365.data.csproj", "{4C9EF695-4909-4328-A15C-1B859A977BEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.entities", "venue365.entities\venue365.entities.csproj", "{47A494E8-A27D-4237-8155-36023AB34606}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.domain", "Libraries\venue365.domain\venue365.domain.csproj", "{3BA289FC-0BFD-4B97-95EE-14E0BC6A190E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.data", "venue365.data\venue365.data.csproj", "{4C9EF695-4909-4328-A15C-1B859A977BEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.entities", "Libraries\venue365.entities\venue365.entities.csproj", "{47A494E8-A27D-4237-8155-36023AB34606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.framework", "venue365.framework\venue365.framework.csproj", "{BA926BD0-E132-4E11-83EA-096AA702D910}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.framework", "Libraries\venue365.framework\venue365.framework.csproj", "{BA926BD0-E132-4E11-83EA-096AA702D910}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +37,10 @@ Global
 		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C9EF695-4909-4328-A15C-1B859A977BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C9EF695-4909-4328-A15C-1B859A977BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C9EF695-4909-4328-A15C-1B859A977BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C9EF695-4909-4328-A15C-1B859A977BEC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3BA289FC-0BFD-4B97-95EE-14E0BC6A190E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BA289FC-0BFD-4B97-95EE-14E0BC6A190E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BA289FC-0BFD-4B97-95EE-14E0BC6A190E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,10 +49,6 @@ Global
 		{47A494E8-A27D-4237-8155-36023AB34606}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47A494E8-A27D-4237-8155-36023AB34606}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47A494E8-A27D-4237-8155-36023AB34606}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C9EF695-4909-4328-A15C-1B859A977BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C9EF695-4909-4328-A15C-1B859A977BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C9EF695-4909-4328-A15C-1B859A977BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C9EF695-4909-4328-A15C-1B859A977BEC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BA926BD0-E132-4E11-83EA-096AA702D910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA926BD0-E132-4E11-83EA-096AA702D910}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA926BD0-E132-4E11-83EA-096AA702D910}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,9 +59,9 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8} = {4FAAA0E4-631C-4A2C-A732-1EB3D9D9CAE7}
+		{4C9EF695-4909-4328-A15C-1B859A977BEC} = {4FAAA0E4-631C-4A2C-A732-1EB3D9D9CAE7}
 		{3BA289FC-0BFD-4B97-95EE-14E0BC6A190E} = {4FAAA0E4-631C-4A2C-A732-1EB3D9D9CAE7}
 		{47A494E8-A27D-4237-8155-36023AB34606} = {4FAAA0E4-631C-4A2C-A732-1EB3D9D9CAE7}
-		{4C9EF695-4909-4328-A15C-1B859A977BEC} = {4FAAA0E4-631C-4A2C-A732-1EB3D9D9CAE7}
 		{BA926BD0-E132-4E11-83EA-096AA702D910} = {4FAAA0E4-631C-4A2C-A732-1EB3D9D9CAE7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
