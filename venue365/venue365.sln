@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365", "venue365\venue3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "venue365.Tests", "venue365.Tests\venue365.Tests.csproj", "{97D87FA1-9F9E-415F-A496-C9351EB6A848}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{4FAAA0E4-631C-4A2C-A732-1EB3D9D9CAE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "alainsoftech.core", "Libraries\alainsoftech.core\alainsoftech.core.csproj", "{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{97D87FA1-9F9E-415F-A496-C9351EB6A848}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97D87FA1-9F9E-415F-A496-C9351EB6A848}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97D87FA1-9F9E-415F-A496-C9351EB6A848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E4FF7DC8-57E6-4D4A-9A8C-69B11D84ECE8} = {4FAAA0E4-631C-4A2C-A732-1EB3D9D9CAE7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E4A075AB-CFF1-4C2C-B3C4-A507ED8409B9}
