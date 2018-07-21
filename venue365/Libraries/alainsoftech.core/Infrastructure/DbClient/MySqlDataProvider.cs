@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace alainsoftech.core.Infrastructure.DbClient
 {
-    public class SqlDataProvider : IDataProvider
+    public class MySqlDataProvider : IMySqlDataProvider
     {
-        public IDbContext GetDbContext(ConnectionParams connectionParams)
+        public IMySqlDbContext GetDbContext(ConnectionParams connectionParams)
         {
-            DbContext dbContext = new DbContext(connectionParams);
+            MySqlDbContext dbContext = new MySqlDbContext(connectionParams);
             return dbContext;
         }
     }

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="security.venue365.pk.SecurityAgent" CodeBehind="SecurityAgent.svc.cs" %>

@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace alainsoftech.core.Infrastructure.DbClient
 {
-    public class MyDbClient : IDbClient
+    public class MySqlDbClient : IMySqlDbClient
     {
-        public SqlCommand CreateSqlCommand(string query, IDbContext dbContext, IEnumerable<SqlParameter> sqlParams = null, CommandType commandType = CommandType.StoredProcedure)
+        public MySqlCommand CreateSqlCommand(string query, IMySqlDbContext dbContext, IEnumerable<MySqlParameter> sqlParams = null, CommandType commandType = CommandType.StoredProcedure)
         {
             try
             {
-                SqlCommand command = new SqlCommand(query, dbContext.Connection);
+                MySqlCommand command = new MySqlCommand(query, dbContext.Connection);
                 command.CommandType = commandType;
                 if (dbContext.TransactionEnabled)
                 {
@@ -41,7 +42,7 @@ namespace alainsoftech.core.Infrastructure.DbClient
             }
         }
 
-        public int ExecuteNonQuery(SqlCommand command)
+        public int ExecuteNonQuery(MySqlCommand command)
         {
             try
             {
@@ -59,7 +60,7 @@ namespace alainsoftech.core.Infrastructure.DbClient
             }
         }
 
-        public object ExecuteScalar(SqlCommand command)
+        public object ExecuteScalar(MySqlCommand command)
         {
             try
             {
@@ -77,12 +78,12 @@ namespace alainsoftech.core.Infrastructure.DbClient
             }
         }
 
-        public DataSet GetDataSet(SqlCommand command)
+        public DataSet GetDataSet(MySqlCommand command)
         {
             try
             {
                 DataSet ds = new DataSet();
-                using(SqlDataAdapter da = new SqlDataAdapter(command))
+                using(MySqlDataAdapter da = new MySqlDataAdapter(command))
                 {
                     da.Fill(ds);
                 }
@@ -100,12 +101,12 @@ namespace alainsoftech.core.Infrastructure.DbClient
             }
         }
 
-        public DataTable GetDataTable(SqlCommand command)
+        public DataTable GetDataTable(MySqlCommand command)
         {
             try
             {
                 DataTable dt = new DataTable();
-                using(SqlDataAdapter da = new SqlDataAdapter(command))
+                using(MySqlDataAdapter da = new MySqlDataAdapter(command))
                 {
                     da.Fill(dt);
                 }

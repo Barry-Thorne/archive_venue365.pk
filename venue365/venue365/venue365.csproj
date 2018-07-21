@@ -48,6 +48,12 @@
     <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.2.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -199,6 +205,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\venue365_db.mdf" />
+    <Content Include="App_Data\venue365_db_log.ldf">
+      <DependentUpon>venue365_db.mdf</DependentUpon>
+    </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -231,13 +241,22 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="AppConfig.config" />
+    <Content Include="AppConfig.Debug.config">
+      <DependentUpon>AppConfig.config</DependentUpon>
+    </Content>
+    <Content Include="AppConfig.Release.config">
+      <DependentUpon>AppConfig.config</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -253,7 +272,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -286,9 +304,33 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Libraries\alainsoftech.cache\alainsoftech.cache.csproj">
+      <Project>{9f9dfbc0-6f63-45ee-a0a8-002d9dfbe59d}</Project>
+      <Name>alainsoftech.cache</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Libraries\alainsoftech.core\alainsoftech.core.csproj">
       <Project>{e4ff7dc8-57e6-4d4a-9a8c-69b11d84ece8}</Project>
       <Name>alainsoftech.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\venue365.data\venue365.data.csproj">
+      <Project>{4c9ef695-4909-4328-a15c-1b859a977bec}</Project>
+      <Name>venue365.data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\venue365.domain\venue365.domain.csproj">
+      <Project>{3ba289fc-0bfd-4b97-95ee-14e0bc6a190e}</Project>
+      <Name>venue365.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\venue365.entities\venue365.entities.csproj">
+      <Project>{47a494e8-a27d-4237-8155-36023ab34606}</Project>
+      <Name>venue365.entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\venue365.framework\venue365.framework.csproj">
+      <Project>{ba926bd0-e132-4e11-83ea-096aa702d910}</Project>
+      <Name>venue365.framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\venue365.securityprovider\venue365.securityprovider.csproj">
+      <Project>{c5dcaf3c-f84a-4bb4-b173-59c23c9ce3f9}</Project>
+      <Name>venue365.securityprovider</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -325,6 +367,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)AppConfig.Config" "$(ProjectDir)$(OutDir)AppConfig.Config"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

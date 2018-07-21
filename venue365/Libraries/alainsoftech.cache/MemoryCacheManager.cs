@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Caching;
 
-namespace alainsoftech.core.Caching
+namespace alainsoftech.cache
 {
-    public partial class NullCache : ICacheManager
+    public partial class MemoryCacheManager : ICacheManager
     {
+        /// <summary>
+        /// Cache object
+        /// </summary>
+        protected ObjectCache Cache
+        {
+            get
+            {
+                return MemoryCache.Default;
+            }
+        }
+
         /// <summary>
         /// Gets or sets the value associated with the specified key.
         /// </summary>
@@ -16,7 +28,7 @@ namespace alainsoftech.core.Caching
         /// <returns>The value associated with the specified key.</returns>
         public virtual T Get<T>(string key)
         {
-            return default(T);
+            return (T)Cache[key];
         }
 
         /// <summary>
@@ -27,6 +39,12 @@ namespace alainsoftech.core.Caching
         /// <param name="cacheTime">Cache time</param>
         public virtual void Set(string key, object data, int cacheTime)
         {
+            if (data == null)
+                return;
+
+            var policy = new CacheItemPolicy();
+            policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime);
+            Cache.Add(new CacheItem(key, data), policy);
         }
 
         /// <summary>
@@ -34,9 +52,9 @@ namespace alainsoftech.core.Caching
         /// </summary>
         /// <param name="key">key</param>
         /// <returns>Result</returns>
-        public bool IsSet(string key)
+        public virtual bool IsSet(string key)
         {
-            return false;
+            return (Cache.Contains(key));
         }
 
         /// <summary>
@@ -45,6 +63,7 @@ namespace alainsoftech.core.Caching
         /// <param name="key">/key</param>
         public virtual void Remove(string key)
         {
+            Cache.Remove(key);
         }
 
         /// <summary>
@@ -53,6 +72,7 @@ namespace alainsoftech.core.Caching
         /// <param name="pattern">pattern</param>
         public virtual void RemoveByPattern(string pattern)
         {
+            this.RemoveByPattern(pattern, Cache.Select(p => p.Key));
         }
 
         /// <summary>
@@ -60,6 +80,8 @@ namespace alainsoftech.core.Caching
         /// </summary>
         public virtual void Clear()
         {
+            foreach (var item in Cache)
+                Remove(item.Key);
         }
 
         /// <summary>

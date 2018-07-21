@@ -27,7 +27,8 @@ namespace alainsoftech.core.Configuration
             config.Database = GetString(configNode.SelectSingleNode("Database"), "value");
             config.DbUsername = GetString(configNode.SelectSingleNode("DbUsername"), "value");
             config.DbPassword = GetString(configNode.SelectSingleNode("DbPassword"), "value");
-
+            config.DbPort = GetString(configNode.SelectSingleNode("DbPort"), "value");
+            config.ApplicationKey = GetString(configNode.SelectSingleNode("ApplicationKey"), "value");
             return config;
         }
 
@@ -53,5 +54,7 @@ namespace alainsoftech.core.Configuration
         public string Database { get; private set; }
         public string DbUsername { get; private set; }
         public string DbPassword { get; private set; }
+        public string DbPort { get; private set; }
+        public string ApplicationKey { get; private set; }
     }
 }

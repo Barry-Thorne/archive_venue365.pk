@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace alainsoftech.core.Caching
+namespace alainsoftech.cache
 {
     public static class CacheExtensions
     {

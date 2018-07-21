@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>alainsoftech.core</RootNamespace>
     <AssemblyName>alainsoftech.core</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -37,11 +37,24 @@
     <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MySql.Data.8.0.11\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -55,16 +68,13 @@
   <ItemGroup>
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="BaseEntity.cs" />
-    <Compile Include="Caching\CacheExtensions.cs" />
-    <Compile Include="Caching\ICacheManager.cs" />
-    <Compile Include="Caching\MemoryCacheManager.cs" />
-    <Compile Include="Caching\NullCache.cs" />
     <Compile Include="CommonHelper.cs" />
     <Compile Include="ComponentModel\GenericDictionaryTypeConverter.cs" />
     <Compile Include="ComponentModel\GenericListTypeConverter.cs" />
     <Compile Include="ComponentModel\WriteLockDisposable.cs" />
     <Compile Include="Configuration\ISettings.cs" />
     <Compile Include="Configuration\AppConfig.cs" />
+    <Compile Include="Constants\CryptoKeys.cs" />
     <Compile Include="Events\EntityDeleted.cs" />
     <Compile Include="Events\EntityInserted.cs" />
     <Compile Include="Events\EntityUpdated.cs" />
@@ -74,12 +84,18 @@
     <Compile Include="Fakes\FakePrincipal.cs" />
     <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
     <Compile Include="Infrastructure\DbClient\ConnectionParams.cs" />
-    <Compile Include="Infrastructure\DbClient\DbContext.cs" />
+    <Compile Include="Infrastructure\DbClient\IMySqlDataProvider.cs" />
+    <Compile Include="Infrastructure\DbClient\IMySqlDbClient.cs" />
+    <Compile Include="Infrastructure\DbClient\IMySqlDbContext.cs" />
+    <Compile Include="Infrastructure\DbClient\MySqlDataProvider.cs" />
+    <Compile Include="Infrastructure\DbClient\MySqlDbClient.cs" />
+    <Compile Include="Infrastructure\DbClient\MySqlDbContext.cs" />
+    <Compile Include="Infrastructure\DbClient\MsSqlDbContext.cs" />
     <Compile Include="Infrastructure\DbClient\IDataProvider.cs" />
     <Compile Include="Infrastructure\DbClient\IDbClient.cs" />
     <Compile Include="Infrastructure\DbClient\IDbContext.cs" />
-    <Compile Include="Infrastructure\DbClient\MyDbClient.cs" />
-    <Compile Include="Infrastructure\DbClient\SqlDataProvider.cs" />
+    <Compile Include="Infrastructure\DbClient\MsSqlDbClient.cs" />
+    <Compile Include="Infrastructure\DbClient\MsSqlDataProvider.cs" />
     <Compile Include="Infrastructure\DependencyManagement\ContainerManager.cs" />
     <Compile Include="Infrastructure\DependencyManagement\IDependencyRegistrar.cs" />
     <Compile Include="Infrastructure\EngineContext.cs" />
@@ -108,6 +124,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\alainsoftech.cache\alainsoftech.cache.csproj">
+      <Project>{9f9dfbc0-6f63-45ee-a0a8-002d9dfbe59d}</Project>
+      <Name>alainsoftech.cache</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

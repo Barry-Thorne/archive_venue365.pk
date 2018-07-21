@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using alainsoftech.core.Caching;
+using alainsoftech.cache;
 using alainsoftech.core.Infrastructure;
 using alainsoftech.core.Infrastructure.DbClient;
 
@@ -24,7 +24,10 @@ namespace alainsoftech.core
                 return _cacheManager.Get<IDbContext>(Keys.DatabaseKey);
             }
         }
-        public static ApplicationContext Current { get; private set; }
+        public static IWorkContext Current
+        {
+            get { return EngineContext.Current.Resolve<IWorkContext>(); }
+        }
         public bool IsAdmin { get; private set; }
     }
 }

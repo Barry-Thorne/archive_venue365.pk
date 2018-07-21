@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace alainsoftech.core.Infrastructure.DbClient
 {
-    public interface IDbContext
+    public interface IDbContext : ICloneable, IDisposable
     {
         SqlConnection Connection { get; }
         SqlTransaction Transaction { get; set; }
